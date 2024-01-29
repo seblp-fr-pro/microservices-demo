@@ -1,0 +1,5 @@
+  loadgenerator:
+    build: loadgenerator/.
+    container_name: loadgenerator
+    environment:
+

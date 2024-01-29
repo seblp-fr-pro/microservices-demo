@@ -1,0 +1,5 @@
+      - DISBALE_PROFILER="1"
+
+    ports:
+      8080:8080
+

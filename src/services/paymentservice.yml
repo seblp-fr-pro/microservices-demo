@@ -1,0 +1,5 @@
+  paymentservice:
+    build: paymentservice/.
+    container_name: paymentservice
+    environment:
+

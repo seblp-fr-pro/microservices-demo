@@ -1,0 +1,5 @@
+  productcatalogservice:
+    build: productcatalogservice/.
+    container_name: productcatalogservice
+    environment:
+

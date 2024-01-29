@@ -1,0 +1,6 @@
+  cartservice:
+    build: cartservice/.
+    container_name: cartservice
+    environment:
+      - REDIS_ADDR="localhost:6379"
+

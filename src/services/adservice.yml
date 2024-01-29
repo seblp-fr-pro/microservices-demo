@@ -1,0 +1,7 @@
+  adservice:
+    build: adservice/.
+    container_name: adservice
+    environment:
+    ports:
+      - 9555:9555 
+

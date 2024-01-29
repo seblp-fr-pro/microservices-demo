@@ -1,0 +1,96 @@
+version: "3.5"
+
+services:
+  adservice:
+    build: adservice/.
+    container_name: adservice
+    ports:
+      - 9555:9555 
+
+  cartservice:
+    build: cartservice/.
+    container_name: cartservice
+    environment:
+      - REDIS_ADDR="localhost:6379"
+
+  checkoutservice:
+    build: checkoutservice/.
+    container_name: checkoutservice
+    environment:
+      - PRODUCT_CATALOG_SERVICE_ADDR="localhost:3550"
+      - SHIPPING_SERVICE_ADDR="localhost:50051"
+      - PAYMENT_SERVICE_ADDR="localhost:50051"
+      - EMAIL_SERVICE_ADDR="localhost:5000"
+      - CURRENCY_SERVICE_ADDR="localhost:7000"
+      - CART_SERVICE_ADDR="localhost:7070"
+    ports:
+      - 5050:5050
+
+  currencyservice:
+    build: currencyservice/.
+    container_name: currencyservice
+    environment:
+      - DISABLE_PROFILER="1"
+    ports:
+      - 7000:7000
+
+  emailservice:
+    build: emailservice/.
+    container_name: emailservice
+    environment:
+      - DISBALE_PROFILER="1"
+    ports:
+      - 8080:8080
+
+  frontend:
+    build: frontend/.
+    container_name: frontend
+    environment:
+      - PRODUCT_CATALOG_SERVICE_ADDR="localhost:3550"
+      - CURRENCY_SERVICE_ADDR="localhost:7000"
+      - CART_SERVICE_ADDR="localhost:7070"
+      - RECOMMENDATION_SERVICE_ADDR="localhost:8080"
+      - SHIPPING_SERVICE_ADDR="localhost:50051"
+      - CHECKOUT_SERVICE_ADDR="localhost:5050" 
+      - AD_SERVICE_ADDR="localhost:9555"
+    ports:
+      - 8080:8080 
+
+  loadgenerator:
+    build: loadgenerator/.
+    container_name: loadgenerator
+
+  paymentservice:
+    build: paymentservice/.
+    container_name: paymentservice
+    ports:
+      - 50051:50051
+    environment:
+      - DISABLE_PROFILER="1"
+
+
+  productcatalogservice:
+    build: productcatalogservice/.
+    container_name: productcatalogservice
+    ports:
+      - 3550:3550
+    environment:
+      - DISABLE_PROFILER="1"
+
+  recommendationservice:
+    build: recommendationservice/.
+    container_name: recommendationservice
+    ports:
+      - 8081:8081
+    environment:
+      - PRODUCT_CATALOG_SERVICE_ADDR="localhost:3550"i
+      - DISABLE_PROFILER="1"
+
+  shippingservice:
+    build: shippingservice/.
+    container_name: shippingservice
+    ports:
+      - 50051:50051
+    environment:
+      - DISABLE_PROFILER="1"
+

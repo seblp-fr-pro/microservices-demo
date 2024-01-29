@@ -1,0 +1,8 @@
+  currencyservice:
+    build: currencyservice/.
+    container_name: currencyservice
+    environment:
+      - DISABLE_PROFILER="1"
+    ports:
+      - 7000:7000
+

@@ -1,0 +1,5 @@
+  shippingservice:
+    build: shippingservice/.
+    container_name: shippingservice
+    environment:
+

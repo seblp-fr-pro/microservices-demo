@@ -1,0 +1,10 @@
+  emailservice:
+    build: emailservice/.
+    container_name: emailservice
+    environment:
+      - DISBALE_PROFILER="1"
+
+    ports:
+      8080:8080
+
+

@@ -1,0 +1,5 @@
+  recommendationservice:
+    build: recommendationservice/.
+    container_name: recommendationservice
+    environment:
+
